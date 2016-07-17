@@ -20,9 +20,20 @@
     "search": {
       "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
       "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",
-      "title": "Search for products on our site",
-      "placeholder": "Search our store",
+      "title": "Search for products in our store",
+      "placeholder": "Search Our Store",
       "submit": "Search"
+    },
+    "password_page" : {
+        "password_link": "Sign in using Password",
+        "opening_soon": "Opening Soon",
+        "signup_form_heading": "Find out when we open",
+        "signup_form_email_placeholder": "Your email",
+        "signup_form_submit": "Submit",
+        "login_form_heading": "Enter the store password to enter",
+        "login_form_password_placeholder": "Your password",
+        "login_form_submit": "Submit",
+        "admin_link_html": "<a href='https://newspring-store.myshopify.com/admin'>Admin Login</a>"
     }
   },
   "blogs": {
@@ -70,7 +81,7 @@
     "label": {
       "product": "Product",
       "price": "Price",
-      "quantity": "Quantity",
+      "quantity": "Qty",
       "total": "Total"
     }
   },
@@ -187,7 +198,7 @@
       "product": "Product",
       "sku": "SKU",
       "price": "Price",
-      "quantity": "Quantity",
+      "quantity": "Qty",
       "total": "Total",
       "fulfilled_at": "Fulfilled {{ date }}",
       "subtotal": "Subtotal"
@@ -271,11 +282,11 @@
     },
     "product": {
       "sold_out": "Sold Out",
-      "on_sale": "On Sale",
+      "on_sale": "Sale",
       "on_sale_from_html": "<strong>On Sale</strong> from {{ price }}",
       "unavailable": "Unavailable",
       "compare_at": "Compare at",
-      "quantity": "Quantity",
+      "quantity": "Qty",
       "add_to_cart": "Add to Cart"
     }
   },

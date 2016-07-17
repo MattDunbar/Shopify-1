@@ -1,0 +1,54 @@
+<!-- MAIN HEADER BAR DESKTOP-->
+<header class="site-header hide xl--show large--hide medium--hide medium-and-down--hide" role="banner">
+  <div class="wrapper">
+    <div class="grid--full grid--table">
+      <!-- LEFT SIDE OF HEADER -->
+      <div class="grid__item xl--one-quarter">
+
+          {% include 'header-logo' %}
+
+      </div>
+
+      <!-- RIGHT SIDE OF HEADER (DESKTOP) -->
+      <div class="grid__item xl--three-quarters xl--text-right">
+
+        <!-- desktop nav -->
+        {% include 'ns-nav' %}
+
+        <!-- Customer accounts snippet <DISABLED> -->
+        {% include 'customer-accounts' %}
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN HEADER BAR (MOBILE) -->
+<header class="mobile-site-header xl--hide large--show medium-down--show" role="banner">
+  <div class="wrapper">
+    <div class="grid--full grid--table">
+      <!-- LEFT SIDE OF HEADER -->
+      <div class="grid__item large--one-half medium-down--one-half">
+
+          {% include 'header-logo' %}
+
+      </div>
+
+      <!-- RIGHT SIDE OF HEADER (MOBILE) -->
+      <div class="grid__item large--text-right medium-down--text-right large--one-half medium-down--one-half">
+          <div class="site-nav--mobile text--right">
+            <button type="button" class="icon-fallback-text site-nav__link js-drawer-open-left" aria-controls="NavDrawer" aria-expanded="false">
+              <span class="icon icon-hamburger" aria-hidden="true"></span>
+              <span class="fallback-text">{{ 'layout.navigation.menu' | t }}</span>
+            </button>
+            <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
+              <span class="icon-fallback-text">
+                <span class="icon icon-cart" aria-hidden="true"></span>
+                <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
+              </span>
+            </a>
+          </div>
+      </div>
+    </div>
+  </div>
+</header>

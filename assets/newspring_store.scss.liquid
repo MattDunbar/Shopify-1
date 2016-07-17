@@ -1,0 +1,1068 @@
+/*
+            THIS FILE EXTENDS TIMBER.SCSS.LIQUID
+    There are no @includes allowed with shopify's scss compiler.
+    For more on this: https://shopify.github.io/Timber/#sass
+
+    For more on how to use this template: https://shopify.github.io/Timber
+
+    NOTE: ALL MARGIN/PADDING STYLES ARE IN TIMBER.SCSS.LIQUID
+
+    ---------------- CONTENTS ----------------
+    BASE VARIABLES
+        - COLORS
+        - FONTS
+        - BORDERS
+    STYLES
+        - BASIC
+        - BODY
+        - LINKS
+        - BUTTONS
+        - HR
+        - HEADERS
+        - COLORS
+        - FORMS
+        - LISTS
+        - SALE BANNER
+    SECTIONS
+        - NAV
+        - SUBHEADING
+        - STORE-HERO
+        - CARE BAR
+        - FOOTER
+        - DRAWERS
+        - CART DRAWER
+    PAGES
+        - SEARCH
+        - PRODUCT
+*/
+
+/*--------------------------------
+        BASE VARIABLES
+--------------------------------*/
+
+$base-spacing-unit: 60px;
+$handheld: 768px; //max
+$portable: 769px; //min
+$anchored: 1025px; //min
+
+
+/* ---------------- COLORS ----------------*/
+$newspring-primary:    #6BAC43!default;
+$newspring-secondary:  #1c683e!default;
+$newspring-tertiary:   #2a4930!default;
+
+$primary-color:    $newspring-primary!default;
+$secondary-color:  $newspring-secondary!default;
+$tertiary-color:   $newspring-tertiary!default;
+
+$drawer-color:     black;
+$dark-color:       #1c1c1c!default;
+$medium-color:     #858585!default;
+$light-color:      white!default;
+$footer-hr-color: #363636;
+$hr-color:         #e6e6e6;
+
+$border-color:     #eeeeee;
+
+$gray-primary:     #dddddd;
+$gray-secondary:   #858585;
+$gray-tertiary:    #303030;
+
+$facebook:	        #42599e!default;
+$twitter:	   	    #55acee!default;
+$google:            #DD4B39!default;
+$instagram:	        #3f729b!default;
+$linkedin:          #0976b4!default;
+$youtube:           #b31217!default;
+$pinterest:         #be0a21!default;
+
+$alert-color:       #C64F55!default;
+$info-color:        #1698DA!default;
+
+/* ---------------- FONTS ----------------*/
+
+$base-heading-font:   "colfax-web", sans-serif!default;
+$base-body-copy-font: 'ff-meta-serif-web-pro', serif!default;
+
+$font-size:           22px!default;
+$base-font-size:      $font-size;
+$line-height:         30px!default;
+$base-line-height:    $line-height;
+$icon-size:           48px!default;
+$base-icon-size:      $icon-size;
+
+$handheld-font-size:      20px!default;
+$handheld-line-height:    26px!default;
+
+$h1:      ($font-size * 2.8)!default;
+$h2:      ($font-size * 2.4)!default;
+$h3:      ($font-size * 1.5)!default;
+$h4:      ($font-size * 1.3)!default;
+$h5:      ($font-size * 1.2)!default;
+$h6:      ($font-size * .9)!default;
+
+$handheld-h1:            ($font-size * 2)!default;
+$handheld-h2:            ($font-size * 1.6)!default;
+$handheld-h3:            ($font-size * 1.4)!default;
+$handheld-h4:            ($font-size * 1.3)!default;
+$handheld-h5:            ($font-size * 1.2)!default;
+$handheld-h6:            ($font-size * 1.1)!default;
+
+/* ---------------- BORDERS ----------------*/
+$border-radius: 	2px!default;
+$border-size: 		3px!default;
+
+
+/*--------------------------------
+            STYLES
+--------------------------------*/
+
+/* ---------------- BASIC ---------------- */
+
+body {
+    font-family: $base-body-copy-font;
+}
+
+.shell {
+    padding-top: $base-spacing-unit;
+    padding-left: $base-spacing-unit*2;
+    padding-right: $base-spacing-unit*2;
+}
+
+.shadow-wrapper {
+    max-width: 1680px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 0 0 25px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 25px rgba(0,0,0,.1);
+    box-shadow: 0 0 25px rgba(0,0,0,.1);
+}
+
+.inline {
+    display: inline-block!important;
+}
+
+.block {
+    display: block;
+}
+
+.text-bold {
+    font-weight: 500;
+}
+
+.relative {
+    position:relative;
+}
+
+/* ---------------- BODY COPY ----------------*/
+p {
+    font-family: $base-body-copy-font;
+    font-size: $font-size;
+    line-height: $line-height;
+    margin-bottom: $base-spacing-unit/2;
+
+    &.colfax, *.colfax {
+        font-family: $base-heading-font;
+        letter-spacing: -.5px;
+    }
+
+    @media screen and (max-width: $handheld){
+        font-size: $handheld-font-size;
+        line-height: $handheld-line-height;
+    }
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+small {
+    font-size: $font-size * .87;
+    line-height: $line-height * .87;
+    display: inline-block;
+
+    a {
+        font-size: $font-size * .87;
+        line-height: $line-height * .87;
+    }
+
+    @media screen and (max-width: $handheld){
+        font-size: $font-size*.8;
+        line-height: $line-height*.8;
+
+        a {
+            font-size: $font-size*.8;
+            line-height: $line-height*.8;
+        }
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.colfax {
+    font-family: $base-heading-font;
+    letter-spacing: -.5px;
+}
+
+/* ---------------- LINKS ----------------*/
+a {
+    color: $primary-color;
+    &:hover {
+        color: darken($primary-color, 15);
+    }
+}
+
+.link {
+    color: $primary-color;
+    &:hover {
+        color: darken($primary-color, 15);
+    }
+}
+
+/* ---------------- BUTTONS ----------------*/
+.ns-btn {
+    font-family: colfax-web,sans-serif;
+    color: $primary-color;
+    border: 3px solid $primary-color;
+    padding: 12px 48px;
+    font-weight: 700;
+    font-size: 20.4px;
+    line-height: 32px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 1000px;
+    transition: all,.1s ease-in-out;
+    &:hover {
+        background-color: $primary-color;
+        color: $light-color;
+    }
+    &.light {
+        color: $light-color;
+        border: 3px solid $light-color;
+        &:hover {
+            background-color: $light-color;
+            color: $secondary-color!important;
+        }
+    }
+    &.rect {
+        border-radius: 0;
+    }
+}
+
+/* ---------------- HR ----------------*/
+hr {
+    border-top: 2px solid $hr-color;
+}
+
+.hr-bottom {
+    border-bottom: 2px solid $hr-color;
+}
+
+/* ---------------- HEADERS ----------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-family: $base-heading-font;
+    font-weight: 600;
+    letter-spacing: -.5px;
+    color: $dark-color;
+
+    a {
+        color: $dark-color;
+        &:hover {
+            color: lighten($dark-color, 10);
+        }
+    }
+}
+
+h1 {
+    font-size: $h1;
+    line-height: $h1*1.05;
+    position: relative;
+    margin-bottom: $base-spacing-unit/2;
+
+    @media screen and (max-width: $handheld){
+        font-size: $handheld-h1;
+        line-height: $handheld-h1;
+    }
+}
+
+h2 {
+    font-size: $h2;
+    line-height: $h2*1.1;
+    margin-bottom: $base-spacing-unit/2;
+
+    @media screen and (max-width: $handheld){
+        font-size: $handheld-h2;
+        line-height: $handheld-h2;
+    }
+}
+
+h3 {
+    font-size: $h3;
+    line-height: $h3*1.1;
+    margin-bottom: $base-spacing-unit/2;
+
+    @media screen and (max-width: $handheld){
+        font-size: $handheld-h3;
+        line-height: $handheld-h3*1.2;
+    }
+}
+
+h4 {
+    font-size: $h4;
+    line-height: $h4*1.1;
+    margin-bottom: $base-spacing-unit/2;
+
+    @media screen and (max-width: $handheld){
+        font-size: $handheld-h4;
+        line-height: $handheld-h4;
+    }
+}
+
+h5 {
+    font-size: $h5;
+    line-height: $h5*1.1;
+    margin-bottom: $base-spacing-unit/2;
+
+    @media screen and (max-width: $handheld){
+        font-size: $handheld-h5;
+        line-height: $handheld-h5;
+    }
+}
+
+h6 {
+    font-size: $h6;
+    line-height: $h6*1.25;
+    margin-bottom: $base-spacing-unit/2;
+
+    @media screen and (max-width: $handheld){
+        font-size: $handheld-h6;
+        line-height: $handheld-h6;
+    }
+}
+
+.h1 { @extend h1; }
+.h2 { @extend h2; }
+.h3 { @extend h3; }
+.h4 { @extend h4; }
+.h5 { @extend h5; }
+.h6 { @extend h6; }
+
+/* ---------------- COLORS ---------------- */
+.dark {
+    color: $dark-color;
+    border-color: $dark-color;
+
+    &:before, &:after {
+        border-color: $dark-color ;
+    }
+
+
+    span {
+        color: $dark-color;
+    }
+}
+
+.grey, .gray {
+    color: lighten($medium-color,20) ;
+    border-color: lighten($medium-color,20) ;
+}
+
+.background--gray, .background--grey {
+    background-color: $gray-primary;
+}
+
+.brand, .primary {
+    color: $newspring-primary;
+    border-color: $newspring-primary ;
+
+    &:before, &:after {
+        border-color: $newspring-primary ;
+    }
+
+    &:hover {
+        color: $newspring-primary ;
+    }
+
+    span {
+        color: $newspring-primary;
+
+        &:hover {
+            color: $newspring-primary;
+        }
+    }
+}
+
+.color--primary {
+    color: $newspring-primary !important;
+}
+
+.color--secondary {
+    color: $secondary-color !important;
+}
+
+.color--tertiary {
+    color: $tertiary-color !important;
+}
+
+.background--primary {
+    background-color: $newspring-primary !important;
+}
+
+.background--secondary {
+    background-color: $secondary-color !important;
+}
+
+.background--tertiary {
+    background-color: $tertiary-color !important;
+}
+
+.background--dark {
+    background-color: $dark-color;
+}
+
+.light {
+    color: $light-color !important;
+    // border-color: $light-color ;
+
+    &:before, &:after {
+        border-color: $light-color ;
+    }
+
+    &.link--arrow {
+        &:before, &:after {
+            border-color: $light-color !important;
+        }
+    }
+
+    &:hover {
+        color: $light-color ;
+    }
+
+    span {
+        color: $light-color;
+
+        &:hover {
+            color: $light-color;
+        }
+    }
+}
+
+// Social Colors
+
+.color--facebook {
+    color: $facebook;
+
+    &.btn--share {
+        border-color: $facebook;
+        background-color: $facebook;
+        color: $light-color;
+
+        &:hover {
+            background-color: darken($facebook, 10);
+            border-color: darken($facebook, 10);
+        }
+    }
+
+    &.link--arrow {
+        color: $facebook;
+
+        &:after {
+            border-color: $facebook;
+        }
+
+        &:hover {
+            color:  darken($facebook, 20);
+
+            &:after {
+                border-color: darken($facebook, 20);
+            }
+        }
+    }
+}
+
+.color--twitter {
+    color: $twitter;
+
+    &.btn--share {
+        border-color: $twitter;
+        background-color: $twitter;
+        color: $light-color;
+
+        &:hover {
+            background-color: darken($twitter, 10);
+            border-color: darken($twitter, 10);
+        }
+    }
+
+    &.link--arrow {
+        color: $twitter;
+
+        &:after {
+            border-color: $twitter;
+        }
+
+        &:hover {
+            color:  darken($twitter, 20);
+
+            &:after {
+                border-color: darken($twitter, 20);
+            }
+        }
+    }
+}
+
+.color--google {
+    color: $google;
+
+    &.btn--share {
+        border-color: $google;
+        background-color: $google;
+        color: $light-color;
+
+        &:hover {
+            background-color: darken($google, 10);
+            border-color: darken($google, 10);
+        }
+    }
+
+    &.link--arrow {
+        color: $google;
+
+        &:after {
+            border-color: $google;
+        }
+
+        &:hover {
+            color:  darken($google, 20);
+
+            &:after {
+                border-color: darken($google, 20);
+            }
+        }
+    }
+}
+
+.color--pinterest {
+    color: $pinterest;
+
+    &.btn--share {
+        border-color: $pinterest;
+        background-color: $pinterest;
+        color: $light-color;
+
+        &:hover {
+            background-color: darken($pinterest, 10);
+            border-color: darken($pinterest, 10);
+        }
+    }
+
+    &.link--arrow {
+        color: $pinterest;
+
+        &:after {
+            border-color: $pinterest;
+        }
+
+        &:hover {
+            color:  darken($pinterest, 20);
+
+            &:after {
+                border-color: darken($pinterest, 20);
+            }
+        }
+    }
+}
+
+.color--instagram {
+    color: $instagram;
+
+    &.btn--share {
+        border-color: $instagram;
+        background-color: $instagram;
+        color: $light-color;
+
+        &:hover {
+            background-color: darken($instagram, 10);
+            border-color: darken($instagram, 10);
+        }
+    }
+
+    &.link--arrow {
+        color: $instagram;
+
+        &:after {
+            border-color: $instagram;
+        }
+
+        &:hover {
+            color:  darken($instagram, 20);
+
+            &:after {
+                border-color: darken($instagram, 20);
+            }
+        }
+    }
+}
+
+.color--youtube {
+    color: $youtube;
+
+    &.btn--share {
+        border-color: $youtube;
+        background-color: $youtube;
+        color: $light-color;
+
+        &:hover {
+            background-color: darken($youtube, 10);
+            border-color: darken($youtube, 10);
+        }
+    }
+
+    &.link--arrow {
+        color: $youtube;
+
+        &:after {
+            border-color: $youtube;
+        }
+
+        &:hover {
+            color:  darken($youtube, 20);
+
+            &:after {
+                border-color: darken($youtube, 20);
+            }
+        }
+    }
+}
+
+.color--linkedin {
+    color: $linkedin;
+
+    &.btn--share {
+        border-color: $linkedin;
+        background-color: $linkedin;
+        color: $light-color;
+
+        &:hover {
+            background-color: darken($linkedin, 10);
+            border-color: darken($linkedin, 10);
+        }
+    }
+
+    &.link--arrow {
+        color: $linkedin;
+
+        &:after {
+            border-color: $linkedin;
+        }
+
+        &:hover {
+            color:  darken($linkedin, 20);
+
+            &:after {
+                border-color: darken($linkedin, 20);
+            }
+        }
+    }
+}
+
+.color--info {
+    color: $info-color;
+}
+
+.background--info {
+    background-color: $info-color;
+}
+
+/* ---------------- FORMS ---------------- */
+select {
+    font-size: $base-font-size*.75;
+    margin-bottom: $base-spacing-unit/4
+}
+
+label {
+    font-size: $base-font-size;
+}
+
+/* ---------------- LISTS ---------------- */
+ol {
+    font-size: $base-font-size;
+    font-family: $base-body-copy-font;
+    margin-bottom: $base-spacing-unit/2;
+}
+
+ul {
+    font-size: $base-font-size;
+    font-family: $base-body-copy-font;
+    margin-bottom: $base-spacing-unit/2;
+}
+
+/*---------------- SALE BANNER ----------------*/
+div.sale-banner {
+    font-size: $base-font-size;
+    background-color: $newspring-primary;
+    color: $light-color;
+    position:absolute;
+    bottom:$base-spacing-unit/4;
+    width: 100%;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/*---------------- NAV ----------------*/
+.breadcrumb p {
+    font-size: $base-font-size*.9;
+}
+
+.xxl--nav-link {
+    text-transform: uppercase;
+    font-weight: 700;
+    border-left: 2px solid $border-color;
+    padding: 27px 25px 23px 23px;
+    font-family: colfax-web,sans-serif;
+    line-height: 30px;
+    letter-spacing: 1px;
+    &:hover {
+        background-color: $dark-color;
+        color: $newspring-primary;
+        border-left: 0;
+        padding-left: 25px; //remove border size of hover element
+    }
+}
+
+.xl--nav-link {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 27px 17px 23px 17px;
+    font-family: colfax-web,sans-serif;
+    line-height: 30px;
+    letter-spacing: 1px;
+    &:hover {
+        background-color: $dark-color;
+        color: $newspring-primary;
+        border-left: 0;
+        padding-left: 25px; //remove border size of hover element
+    }
+}
+
+.site-header {
+    padding: 0;
+    .wrapper {
+        padding-right:0;
+        border-bottom: 3px solid $newspring-primary;
+    }
+}
+
+.mobile-site-header {
+    .site-header__logo {
+        img {
+            margin: 6px 0 6px 0;
+            height: 40px;
+        }
+    }
+    padding: 0;
+    .wrapper {
+        padding-right:0;
+        border-bottom: 3px solid $newspring-primary;
+    }
+}
+
+/* ---------------- SUBHEADING ---------------- */
+.subheading {
+    height: 80px;
+}
+
+//search bar
+.subheading .input-group-field {
+    height: 44px;
+    font-size: $base-font-size;
+    border: 0px;
+    border-radius: 0!important;
+}
+
+.subheading .input-group-btn {
+    height: 44px;
+    border: 0px;
+    background-color: white;
+
+    button {
+        background-color: white;
+        margin-bottom: 6px; //to vertically center icon
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+    .icon-search {
+        background-color: white;
+        color: $newspring-primary;
+        font-size: $base-font-size;
+    }
+}
+
+#subheading-cart {
+    margin-top: 25px;
+}
+
+/* ---------------- STORE HERO ---------------- */
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.store-hero {
+	background-image: url(https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/store/68e28252-c2b1-4adb-9ac7-667b6de7e4d5_1076_538_90_c1.jpeg);
+}
+
+.background--fill {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero__image {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay.overlay--gradient:after {
+    content: '';
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+	z-index: 0;
+    background: linear-gradient(to bottom,transparent 0,#000 100%);
+	    background-image: linear-gradient(transparent 0px, rgb(0, 0, 0) 100%);
+	    background-position-x: initial;
+	    background-position-y: initial;
+	    background-size: initial;
+	    background-repeat-x: initial;
+	    background-repeat-y: initial;
+	    background-attachment: initial;
+	    background-origin: initial;
+	    background-clip: initial;
+	    background-color: initial;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
+}
+
+.overlay .overlay__item {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------------- MAIN ---------------- */
+main.main-content {
+    margin-bottom: $base-spacing-unit/2;
+    padding-bottom: 0;
+}
+
+/* ---------------- CARE BAR (before footer) ---------------- */
+.care-bar-item {
+    font-size: $base-font-size*.9;
+}
+
+/* ---------------- FOOTER ---------------- */
+footer {
+    font-family: "colfax-web", sans-serif;
+
+    .wrapper {
+        padding-top: $base-spacing-unit/2;
+        background-color: $dark-color;
+        a:hover {
+            color: $light-color;
+        }
+    }
+
+    h5 {
+        padding-bottom: 10px;
+        border-bottom: 3px solid $footer-hr-color;
+        margin-bottom: $base-spacing-unit/4;
+        width: 100%;
+        font-size: $base-font-size;
+    }
+
+    ul {
+        list-style: outside;
+        list-style-type: none;
+        max-width: none;
+        margin: 0px;
+
+        li {
+            margin: 0px;
+            font-family: $base-heading-font;
+            font-size: $base-font-size*.9;
+            line-height: $base-line-height;
+            font-weight: 500;
+            color: darken($light-color, 30);
+            padding: 5px 0;
+
+            a, span {
+                display: inline-block;
+            }
+        }
+    }
+
+    hr {
+        border-top: 3px solid $footer-hr-color!important;
+
+    }
+
+    small {
+        font-weight: 500;
+        font-size: $base-font-size*.7;
+        line-height: $base-line-height;
+        a {
+            font-size: $base-font-size*.7;
+            line-height: $base-line-height*.7;
+        }
+    }
+}
+
+/* ---------------- DRAWERS ----------------- */
+.drawer {
+    background-color: $drawer-color;
+    color: white;
+    .drawer__close button {
+        background-color: $alert-color;
+    }
+
+    .icon {
+        font-size: $base-font-size;
+    }
+}
+
+.drawer__header {
+    border: 0;
+}
+
+.drawer__title {
+    color: white;
+}
+
+.mobile-nav>.mobile-nav__item {
+    background-color: $drawer-color;
+    font-family: $base-heading-font;
+    &:after {
+        border-bottom: 0;
+    }
+}
+
+.mobile-nav__link {
+    color: white!important;
+    font-weight: 700;
+    text-transform: uppercase;
+    &:hover {
+        color: $primary-color!important;
+    }
+}
+
+.mobile-nav__search {
+    .input-group {
+        .input-group-field {
+            height: 45px;
+            font-size: $base-font-size;
+            border-radius: 0 0 0 0;
+        }
+        .btn {
+            height:45px;
+            border-radius: 0 0 0 0!important;
+        }
+    }
+}
+
+/* ---------------- CART -----------------*/
+.ajaxcart__qty-adjust {
+    color: white;
+}
+
+.ajaxcart__qty-num {
+    color: white;
+    font-weight: 500;
+    font-size: $base-font-size*.75;
+}
+
+hr.light {
+    border-top: 1px solid white;
+}
+
+#CartSpecialInstructions {
+    font-size: $base-font-size;
+}
+
+.additional_checkout_buttons input {
+    border: 0;
+}
+
+.cart__checkout {
+    border-color: $newspring-primary;
+    color: $newspring-primary;
+}
+
+.ajaxcart__product-meta {
+    margin-top: 8px;
+}
+
+.ajaxcart__product {
+    &.grid--full {
+        &.display-table {
+            margin-top: 8px;
+        }
+    }
+}
+
+#CartContainer .grid--full.display-table {
+    margin-top: 8px;
+}
+
+/* ---------------- SEARCH PAGE ---------------- */
+.search-page .input-group .input-group-field {
+    height: 44px;
+    font-size: $base-font-size;
+    border: 1px solid $newspring-primary;
+    border-radius: 0!important;
+}
+
+.search-page .input-group-btn {
+    height: 44px;
+    border: 0px;
+    background-color: $newspring-primary;
+
+    button {
+        background-color: $newspring-primary;
+        margin-bottom: 6px; //to vertically center icon
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+    .icon-search {
+        background-color: $newspring-primary;
+        color: $light-color;
+        font-size: $base-font-size;
+    }
+}
+
+/* ---------------- PRODUCT PAGE ---------------- */
+
+#ProductPhoto img {
+    width: 100%;
+}

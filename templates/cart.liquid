@@ -31,7 +31,7 @@
               </a>
             </td>
             <td>
-              <a href="{{ item.url }}" class="h4">
+              <a href="{{ item.url }}">
                 {{ item.product.title }}
               </a>
               {% unless item.variant.title contains 'Default' %}
@@ -74,9 +74,7 @@
               </a>
             </td>
             <td data-label="{{ 'cart.label.price' | t }}">
-              <span class="h3">
                 {{ item.price | money }}
-              </span>
             </td>
             <td data-label="{{ 'cart.label.quantity' | t }}">
               <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
@@ -85,12 +83,10 @@
               {% if item.original_line_price != item.line_price %}
                 <span class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></span>
               {% endif %}
-              <span class="h3">
-                {{ item.line_price | money }}
-              </span>
+              {{ item.line_price | money }}
               {% for discount in item.discounts %}
                 <span class="cart-item__discount">{{ discount.title }}</span>
-              {% endfor %}  
+              {% endfor %}
             </td>
           </tr>
         {% endfor %}
@@ -106,14 +102,14 @@
       <div class="grid__item text-right{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
         <p>
           <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
-          <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
+          <span class="cart__subtotal">{{ cart.total_price | money }}</span>
         </p>
         {% if cart.total_discounts > 0 %}
           {% assign savings = cart.total_discounts | money %}
           <p>
-            <span class="cart-subtotal__savings"><em>{{ 'cart.general.savings_html' | t: price: savings }}</em></span>  
+            <span class="cart-subtotal__savings"><em>{{ 'cart.general.savings_html' | t: price: savings }}</em></span>
           </p>
-        {% endif %}  
+        {% endif %}
         <p><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
         <input type="submit" name="update" class="btn--secondary update-cart" value="{{ 'cart.general.update' | t }}">
         <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">

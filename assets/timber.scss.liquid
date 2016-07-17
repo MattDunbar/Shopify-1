@@ -54,24 +54,30 @@
 ==============================================================================*/
 $viewportIncrement: 1px;
 
-$small: 480px;
-$medium: 768px;
-$large: 769px;
+$small: 480px; /* handheld */
+$medium: 768px; /* portable was 769*/
+$large: 769px; /* anchored was 1025 */
+$xl: 1025px;
+$xxl: 1100px; //for nav breaking
 
 $postSmall: $small + $viewportIncrement;
 $preMedium: $medium - $viewportIncrement;
+$postMedium: $medium + $viewportIncrement;
 $preLarge: $large - $viewportIncrement;
+$preXl: $xl - $viewportIncrement;
 
 /*================ The following are dependencies of csswizardry grid ================*/
 $breakpoints: (
   'small' '(max-width: #{$small})',
   'medium' '(min-width: #{$postSmall}) and (max-width: #{$medium})',
   'medium-down' '(max-width: #{$medium})',
-  'large' '(min-width: #{$large})'
+  'large' '(min-width: #{$large}) and (max-width: #{$preXl})',
+  'xl' '(min-width: #{$xl})',
+  'xxl' '(min-width: #{$xxl})'
 );
-$breakpoint-has-widths: ('small', 'medium', 'medium-down', 'large');
-$breakpoint-has-push:  ('medium', 'medium-down', 'large');
-$breakpoint-has-pull:  ('medium', 'medium-down', 'large');
+$breakpoint-has-widths: ('small', 'medium', 'medium-down', 'large', 'xl', 'xxl');
+$breakpoint-has-push:  ('medium', 'medium-down', 'large', 'xl', 'xxl');
+$breakpoint-has-pull:  ('medium', 'medium-down', 'large', 'xl', 'xxl');
 
 /*============================================================================
   #General Variables
@@ -133,10 +139,11 @@ $colorDrawerText: #333;
 $drawerTransition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
 
 // Sizing variables
-$siteWidth: 1180px;
+$siteWidth: 1680px; //was 1180
 $gutter: 30px;
 $gridGutter: 30px; // can be a %, but nested grids will have smaller margins because of it
 $radius: 3px;
+$base-spacing-unit: 60px;
 
 // Z-index
 $zindexNavDropdowns: 5;
@@ -489,6 +496,75 @@ $class-type: unquote(".");
   #{$class-type}#{$namespace}nine-twelfths   { width: 75%; }
   #{$class-type}#{$namespace}ten-twelfths    { width: 83.333%; }
   #{$class-type}#{$namespace}eleven-twelfths { width: 91.666%; }
+
+
+  /** Padding */
+  #{$class-type}#{$namespace}hard       { padding: 0!important; }
+  #{$class-type}#{$namespace}hard--left       { padding-left: 0!important; }
+  #{$class-type}#{$namespace}hard--right       { padding-right: 0!important; }
+  #{$class-type}#{$namespace}hard--top       { padding-top: 0!important; }
+  #{$class-type}#{$namespace}hard--bottom       { padding-bottom: 0!important; }
+  #{$class-type}#{$namespace}hard--ends       { padding-top: 0!important; padding-bottom: 0!important; }
+  #{$class-type}#{$namespace}hard--sides       { padding-left: 0!important; padding-right: 0!important; }
+
+  #{$class-type}#{$namespace}soft       { padding: $base-spacing-unit!important; }
+  #{$class-type}#{$namespace}soft--left       { padding-left: $base-spacing-unit!important; }
+  #{$class-type}#{$namespace}soft--right       { padding-right: $base-spacing-unit!important; }
+  #{$class-type}#{$namespace}soft--top       { padding-top: $base-spacing-unit!important; }
+  #{$class-type}#{$namespace}soft--bottom       { padding-bottom: $base-spacing-unit!important; }
+  #{$class-type}#{$namespace}soft--ends       { padding-top: $base-spacing-unit!important; padding-bottom: $base-spacing-unit!important; }
+  #{$class-type}#{$namespace}soft--sides       { padding-left: $base-spacing-unit!important; padding-right: $base-spacing-unit!important; }
+
+  #{$class-type}#{$namespace}soft-half       { padding: $base-spacing-unit/2!important; }
+  #{$class-type}#{$namespace}soft-half--left       { padding-left: $base-spacing-unit/2!important; }
+  #{$class-type}#{$namespace}soft-half--right       { padding-right: $base-spacing-unit/2!important; }
+  #{$class-type}#{$namespace}soft-half--top       { padding-top: $base-spacing-unit/2!important; }
+  #{$class-type}#{$namespace}soft-half--bottom       { padding-bottom: $base-spacing-unit/2!important; }
+  #{$class-type}#{$namespace}soft-half--ends       { padding-top: $base-spacing-unit/2!important; padding-bottom: $base-spacing-unit/2!important; }
+  #{$class-type}#{$namespace}soft-half--sides       { padding-left: $base-spacing-unit/2!important; padding-right: $base-spacing-unit/2!important; }
+
+  #{$class-type}#{$namespace}soft-quarter       { padding: $base-spacing-unit/4!important; }
+  #{$class-type}#{$namespace}soft-quarter--left       { padding-left: $base-spacing-unit/4!important; }
+  #{$class-type}#{$namespace}soft-quarter--right       { padding-right: $base-spacing-unit/4!important; }
+  #{$class-type}#{$namespace}soft-quarter--top       { padding-top: $base-spacing-unit/4!important; }
+  #{$class-type}#{$namespace}soft-quarter--bottom       { padding-bottom: $base-spacing-unit/4!important; }
+  #{$class-type}#{$namespace}soft-quarter--ends       { padding-top: $base-spacing-unit/4!important; padding-bottom: $base-spacing-unit/4!important; }
+  #{$class-type}#{$namespace}soft-quarter--sides       { padding-left: $base-spacing-unit/4!important; padding-right: $base-spacing-unit/4!important; }
+
+    /** Margin */
+    #{$class-type}#{$namespace}flush       { margin: 0!important; }
+    #{$class-type}#{$namespace}flush--left       { margin-left: 0!important; }
+    #{$class-type}#{$namespace}flush--right       { margin-right: 0!important; }
+    #{$class-type}#{$namespace}flush--top       { margin-top: 0!important; }
+    #{$class-type}#{$namespace}flush--bottom       { margin-bottom: 0!important; }
+    #{$class-type}#{$namespace}flush--ends       { margin-top: 0!important; margin-bottom: 0!important; }
+    #{$class-type}#{$namespace}flush--sides       { margin-left: 0!important; margin-right: 0!important; }
+
+    #{$class-type}#{$namespace}push       { margin: $base-spacing-unit!important; }
+    #{$class-type}#{$namespace}push--left       { margin-left: $base-spacing-unit!important; }
+    #{$class-type}#{$namespace}push--right       { margin-right: $base-spacing-unit!important; }
+    #{$class-type}#{$namespace}push--top       { margin-top: $base-spacing-unit!important; }
+    #{$class-type}#{$namespace}push--bottom       { margin-bottom: $base-spacing-unit!important; }
+    #{$class-type}#{$namespace}push--ends       { margin-top: $base-spacing-unit!important; margin-bottom: $base-spacing-unit!important; }
+    #{$class-type}#{$namespace}push--sides       { margin-left: $base-spacing-unit!important; margin-right: $base-spacing-unit!important; }
+
+    #{$class-type}#{$namespace}push-half       { margin: $base-spacing-unit/2!important; }
+    #{$class-type}#{$namespace}push-half--left       { margin-left: $base-spacing-unit/2!important; }
+    #{$class-type}#{$namespace}push-half--right       { margin-right: $base-spacing-unit/2!important; }
+    #{$class-type}#{$namespace}push-half--top       { margin-top: $base-spacing-unit/2!important; }
+    #{$class-type}#{$namespace}push-half--bottom       { margin-bottom: $base-spacing-unit/2!important; }
+    #{$class-type}#{$namespace}push-half--ends       { margin-top: $base-spacing-unit/2!important; margin-bottom: $base-spacing-unit/2!important; }
+    #{$class-type}#{$namespace}push-half--sides       { margin-left: $base-spacing-unit/2!important; margin-right: $base-spacing-unit/2!important; }
+
+    #{$class-type}#{$namespace}push-quarter       { margin: $base-spacing-unit/4!important; }
+    #{$class-type}#{$namespace}push-quarter--left       { margin-left: $base-spacing-unit/4!important; }
+    #{$class-type}#{$namespace}push-quarter--right       { margin-right: $base-spacing-unit/4!important; }
+    #{$class-type}#{$namespace}push-quarter--top       { margin-top: $base-spacing-unit/4!important; }
+    #{$class-type}#{$namespace}push-quarter--bottom       { margin-bottom: $base-spacing-unit/4!important; }
+    #{$class-type}#{$namespace}push-quarter--ends       { margin-top: $base-spacing-unit/4!important; margin-bottom: $base-spacing-unit/4!important; }
+    #{$class-type}#{$namespace}push-quarter--sides       { margin-left: $base-spacing-unit/4!important; margin-right: $base-spacing-unit/4!important; }
+
+    #{$class-type}#{$namespace}text-center       { text-align:center; }
 }
 
 /*================ Clearfix helper on uniform grids ================*/
@@ -784,11 +860,11 @@ input,
 textarea,
 button,
 select {
-  font-size: $baseFontSize;
-  line-height: 1.6;
-  font-family: $bodyFontStack;
-  color: $colorTextBody;
-  font-weight: 300;
+  //font-size: $baseFontSize;
+  //line-height: 1.6;
+  //font-family: $bodyFontStack;
+  //color: $colorTextBody;
+  //font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
 }
@@ -962,7 +1038,7 @@ hr {
     display: table-cell;
     vertical-align: middle;
     text-align: right;
-    width: 335px;
+    width: 356px;
 
     @include at-query ($max, $medium) {
       margin-bottom: $gutter;
@@ -1004,7 +1080,7 @@ hr {
   background: none;
   border: 0 none;
   float: left;
-  padding: 10px 8px;
+  padding: 15px 8px;
   color: $colorBorder;
   line-height: 1;
 
@@ -1043,12 +1119,17 @@ hr {
   }
 
   > div {
-    margin-bottom: $gutter / 2;
+    margin-bottom:0;
   }
 
   li {
-    margin-bottom: 0.4em;
+    margin-bottom: 0;
   }
+
+  p {
+      margin-bottom: 0;
+  }
+
 }
 
 .rte--header {
@@ -1165,13 +1246,13 @@ html input[disabled] {
   #Lists
 ==============================================================================*/
 ul, ol {
-  margin: 0 0 ($gutter / 2) 20px;
+  margin: 0 0 ($gutter / 2) 30px;
   padding: 0;
 }
 
 ol { list-style: decimal; }
 ul ul, ul ol,
-ol ol, ol ul { margin: 4px 0 5px 20px; }
+ol ol, ol ul { margin: 4px 0 5px 15px; }
 li { margin-bottom: 0.25em; }
 
 ul.square { list-style: square outside; }
@@ -1544,7 +1625,7 @@ label[for] {
   select,
   textarea {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   input[type="radio"],
@@ -1844,7 +1925,7 @@ label.error {
 
   li {
     margin: 0;
-    display: block;
+    display: inline-block;
   }
 
   > li {
@@ -2081,11 +2162,6 @@ label.error {
 
   a {
     color: $colorDrawerText;
-
-    &:hover,
-    &:focus {
-      opacity: 0.7;
-    }
   }
 
   input,
@@ -2182,13 +2258,13 @@ label.error {
   #Site Footer
 ==============================================================================*/
 .site-footer {
-  background-color: $colorFooterBg;
-  padding: $gutter 0;
+  //background-color: $colorFooterBg;
+  //padding: $gutter 0;
   color: $colorFooterText;
 
-  @include at-query ($min, $large) {
-    padding: ($gutter * 2) 0;
-  }
+  //@include at-query ($min, $large) {
+  //    padding: ($gutter * 2) 0;
+  //}
 }
 
 /*============================================================================
@@ -2200,7 +2276,7 @@ label.error {
 
   img {
     display: block;
-    margin: 0 auto;
+    //margin: 0 auto;
   }
 }
 
@@ -2470,13 +2546,15 @@ label.error {
   max-width: 100px;
   min-width: 75px;
   overflow: visible;
+  display: inline-block;
 
   input {
+    height: 37px;
     display: block;
     background: none;
     text-align: center;
     width: 100%;
-    padding: 5px 25px;
+    padding: 7px 25px;
     margin: 0;
   }
 }

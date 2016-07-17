@@ -18,15 +18,15 @@
                 <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
               </div>
               <div class="grid__item three-quarters">
-                <p>
-                  <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
+                <p class="flush--bottom">
+                  <a href="{{url}}" class="ajaxcart__product-name light colfax">{{name}}</a>
                   {{#if variation}}
-                    <span class="ajaxcart__product-meta">{{variation}}</span>
+                    <span class="ajaxcart__product-meta colfax hard">{{variation}}</span>
                   {{/if}}
                   {{#properties}}
                     {{#each this}}
                       {{#if this}}
-                        <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                        <span class="ajaxcart__product-meta colfax hard">{{@key}}: {{this}}</span>
                       {{/if}}
                     {{/each}}
                   {{/properties}}
@@ -51,10 +51,10 @@
                   </div>
                   <div class="grid__item display-table-cell one-half text-right">
                     {{#if discountsApplied}}
-                      <small class="ajaxcart-item__price-strikethrough"><s>{{{originalLinePrice}}}</s></small>
-                      <br><span>{{{linePrice}}}</span>
+                      <small class="ajaxcart-item__price-strikethrough light colfax"><s>{{{originalLinePrice}}}</s></small>
+                      <br><span class="light colfax">{{{linePrice}}}</span>
                     {{else}}
-                      <span>{{{linePrice}}}</span>
+                      <span class="light colfax">{{{linePrice}}}</span>
                     {{/if}}
                     </div>
                   </div>
@@ -62,7 +62,7 @@
                     <div class="grid--full display-table">
                       <div class="grid__item text-right">
                         {{#each discounts}}
-                          <small class="ajaxcart-item__discount">{{ this.title }}</small><br>
+                          <small class="ajaxcart-item__discount light colfax">{{ this.title }}</small><br>
                         {{/each}}
                       </div>
                     </div>
@@ -77,29 +77,35 @@
 
         {% endraw %}{% if settings.cart_notes_enable %}{% raw %}
           <div>
-            <label for="CartSpecialInstructions">{% endraw %}{{ 'cart.general.note' | t }}{% raw %}</label>
+            <label class="colfax" for="CartSpecialInstructions">{% endraw %}{{ 'cart.general.note' | t }}{% raw %}</label>
             <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ note }}</textarea>
+
+            <hr class="light"/>
           </div>
         {% endraw %}{% endif %}{% raw %}
       </div>
       <div class="ajaxcart__footer">
         <div class="grid--full">
           <div class="grid__item two-thirds">
-            <p>{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</p>
+            <p class="colfax">
+                <strong>{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</strong>
+            </p>
           </div>
           <div class="grid__item one-third text-right">
-            <p>{{{totalPrice}}}</p>
+            <p class="colfax">
+                <strong>{{{totalPrice}}}</strong>
+            </p>
           </div>
           {{#if totalCartDiscount}}
-            <p class="ajaxcart__savings text-center"><em>{{{totalCartDiscount}}}</em></p>
+            <p class="ajaxcart__savings text-center colfax"><em>{{{totalCartDiscount}}}</em></p>
           {{/if}}
         </div>
-        <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
-        <button type="submit" class="btn--secondary btn--full cart__checkout" name="checkout">
-          {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %} &rarr;
+        <p class="text-center colfax">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
+        <button type="submit" class="ns-btn btn--full cart__checkout push-quarter--bottom" name="checkout">
+          {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}
         </button>
         {% endraw %}{% if additional_checkout_buttons %}
-          <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
+          <div class="additional_checkout_buttons text-center">{{ content_for_additional_checkout_buttons }}</div>
         {% endif %}{% raw %}
       </div>
     </form>
@@ -107,12 +113,13 @@
   </script>
   <script id="AjaxQty" type="text/template">
   {% raw %}
+    <!-- cart quantity -->
     <div class="ajaxcart__qty">
       <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text" data-id="{{id}}" data-qty="{{itemMinus}}">
         <span class="icon icon-minus" aria-hidden="true"></span>
         <span class="fallback-text">&minus;</span>
       </button>
-      <input type="text" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{id}}" aria-label="quantity" pattern="[0-9]*">
+      <input type="text" class="ajaxcart__qty-num light" value="{{itemQty}}" min="0" data-id="{{id}}" aria-label="quantity" pattern="[0-9]*">
       <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text" data-id="{{id}}" data-qty="{{itemAdd}}">
         <span class="icon icon-plus" aria-hidden="true"></span>
         <span class="fallback-text">+</span>
@@ -122,6 +129,7 @@
   </script>
   <script id="JsQty" type="text/template">
   {% raw %}
+    <!-- Page quantity -->
     <div class="js-qty">
       <button type="button" class="js-qty__adjust js-qty__adjust--minus icon-fallback-text" data-id="{{id}}" data-qty="{{itemMinus}}">
         <span class="icon icon-minus" aria-hidden="true"></span>

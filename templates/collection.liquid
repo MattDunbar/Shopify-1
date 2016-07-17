@@ -13,20 +13,20 @@
 {% comment %}
   Use .grid--rev so that the collection tags appear below the products on mobile
 {% endcomment %}
-<div class="grid--rev">
-  <div class="grid__item large--three-quarters">
+<div class="grid">
+  <div class="grid__item">
 
     {% comment %}
       Different markup if a collection description exists
     {% endcomment %}
     {% if collection.description != blank %}
       <header class="section-header">
-        <h1 class="section-header__title">{{ collection.title }}</h1>
-        <div class="rte rte--header">
-          {{ collection.description }}
-        </div>
+        <h1 class="h2 section-header__title">{{ collection.title }}</h1>
+        <p class="flush--bottom">
+            {{ collection.description }}
+        </p>
       </header>
-      <hr>
+      <hr class="flush--top">
       <div class="section-header">
         <div class="section-header__right">
           {% include 'collection-sorting' %}
@@ -34,7 +34,7 @@
       </div>
     {% else %}
       <header class="section-header">
-        <h1 class="section-header__title section-header__left">{{ collection.title }}</h1>
+        <h1 class="h2 section-header__title section-header__left">{{ collection.title }}</h1>
         <div class="section-header__right">
           {% include 'collection-sorting' %}
         </div>
@@ -55,30 +55,6 @@
 
         {% include 'product-grid-item' %}
 
-      {% else %}
-
-        {% if collection.handle == 'all' and current_tags == '' %}
-
-          {% comment %}
-            Add default products to help with onboarding for collections/all only
-          {% endcomment %}
-          {% unless emptyState %}
-            {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
-            {% assign emptyState = true %}
-          {% endunless %}
-          {% include 'onboarding-empty-collection' %}
-
-        {% else %}
-
-          {% comment %}
-            If collection exists but is empty, display message
-          {% endcomment %}
-          <div class="grid__item">
-            <p>{{ 'collections.general.no_matches' | t }}</p>
-          </div>
-
-        {% endif %}
-
       {% endfor %}
 
     </div>
@@ -92,9 +68,15 @@
 
   </div>
 
-  <div class="grid__item large--one-quarter">
+  <div class="grid__item xl--one-quarter large--one-quarter">
     {% include 'collection-sidebar' %}
   </div>
 </div>
 
 {% endpaginate %}
+
+<hr/>
+<!-- back button -->
+<p class="colfax text-bold text-center push--top">
+    <a href="/"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;&nbsp;Back to Store Home</a>
+</p>

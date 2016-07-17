@@ -1,30 +1,25 @@
-Shopify Timber [![Circle CI](https://circleci.com/gh/Shopify/Timber.svg?style=svg)](https://circleci.com/gh/Shopify/Timber)
+Shopify NewSpring
 =====================
 
-Timber is a theme framework for Shopify that helps you get your store up and running quickly. It provides all required theme templates, a starter set of liquid tags, and some basic styles and modules for you to extend on.
+This theme is a modification of the [Timber](http://shopify.com/timber) theme by shopify for the [NewSpring Store](https://newspring-store.myshopify.com).
 
-Styling and customization is left up to you. Some base styles and helpers are included, but there is **no need to remove any code before you start**. Simply download and get designing.
-
-Designing a store for a client? Earn 20% revenue through our <a href="http://www.shopify.com/partners">Partner program<a/>.
-
-Ways to Get Started
+Get Started
 ---------------------
-- Download the [latest release](https://github.com/Shopify/Timber/releases)
-- Clone the repo `git clone https://github.com/Shopify/Timber.git`
-- Or install with [Bower](http://bower.io/) `bower install timber`
+- Clone the repo `git clone https://github.com/NewSpring/Shopify.git`
+- run `gem install shopify_theme` to install Shopify's theme tools
+- from inside the Shopify directory, run `theme configure <API Key> <Password> newspring-store.myshopify.com`
+  - Get the api key and password from the admin control panel under `Admin > Apps > Private Apps > Dev`
+  - Enter the key and password without the <>
+
+Editing
+---------------------
+- Launch terminal and run `theme watch`
+  - This watches for changes and automatically uploads the changes to the store when a file is saved.
+- Alternatively, you can just run `theme upload` after every change you want to test
 
 Documentation
 ---------------------
-Visit the [Timber's Documentation](http://shopify.com/timber) page to find out more about the templates, liquid tags, CSS framework, and JavaScript modules included.
-
-Timber's documentation is hosted on [GitHub Pages](http://pages.github.com/). View the raw files in the [gh-pages branch](https://github.com/Shopify/Timber/tree/gh-pages). Please report any discrepancies, bugs, or requests in [issues](https://github.com/Shopify/Timber/issues).
-
-Demo Stores
----------------------
-- [Demo Store](https://timber-demo.myshopify.com/): A store setup with some products, blog posts, and customer accounts
-- [Empty Store](https://timber-demo-empty.myshopify.com/): A fresh store, just what you should expect when you install on your new store
-
-For a set of demo products to use during development, [download this CSV file](http://www.tetchi.ca/wp-content/uploads/2013/04/products1.csv) and import it on our products page.
+Visit the [Timber's Documentation](http://shopify.com/timber) page to find out more about the base theme, and supporting JS.
 
 Basic structure
 ---------------
@@ -56,21 +51,6 @@ Basic structure
 ├── config.yml
 │   └── if using the theme gem (see link under Additional Resources)
 ```
-i18n testing
----------------------
-Tests make sure there are no missing or extra i18n strings or invalid html in your locale liquid files.
-
-All PRs must pass the tests before being merged. Check the test status when you open a new PR on GitHub, or locally with the following.
-
-- `bundle install` to install all the dependecies
-- `rspec spec` to run all the tests
-
-Support
----------------------
-Get involved with Timber or follow along with updates and news.
-
-- Track all issues and feature requests here on GitHub.
-- Follow author [@cshold on Twitter](http://twitter.com/cshold).
 
 Additional resources
 ---------------------

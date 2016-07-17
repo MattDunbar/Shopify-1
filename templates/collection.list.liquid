@@ -1,17 +1,17 @@
 <!-- /templates/collection.list.liquid -->
 {% comment %}
 
-  By using a variation of the 'view all' parameter technique, you can create
-  a custom layout for any template by adding ?view=xxxx
+By using a variation of the 'view all' parameter technique, you can create
+a custom layout for any template by adding ?view=xxxx
 
-  In this example, you can have a list view of your collection page by going to
-  /collections/all?view=list
+In this example, you can have a list view of your collection page by going to
+/collections/all?view=list
 
-  For more information on collection tags:
-    - http://docs.shopify.com/themes/liquid-variables/collection
+For more information on collection tags:
+- http://docs.shopify.com/themes/liquid-variables/collection
 
-  For more information on the ?view parameter:
-    - http://docs.shopify.com/support/configuration/store-customization/can-i-show-more-than-50-products-on-my-homepage-can-i-add-a-view-all-function-to-my-collection-pages#add-view-all
+For more information on the ?view parameter:
+- http://docs.shopify.com/support/configuration/store-customization/can-i-show-more-than-50-products-on-my-homepage-can-i-add-a-view-all-function-to-my-collection-pages#add-view-all
 
 {% endcomment %}
 
@@ -20,41 +20,37 @@
 {% include 'breadcrumb' %}
 
 {% comment %}
-  Use .grid--rev so that the collection tags appear below the products on mobile
+    Different markup if a collection description exists
 {% endcomment %}
-<div class="grid--rev">
-  <div class="grid__item large--three-quarters">
-
-    {% comment %}
-      Different markup if a collection description exists
-    {% endcomment %}
-    {% if collection.description != blank %}
-      <header class="section-header">
-        <h1 class="section-header__title">{{ collection.title }}</h1>
+{% if collection.description != blank %}
+    <header class="section-header">
+        <h1 class="h2 section-header__title">{{ collection.title }}</h1>
         <div class="rte rte--header">
-          {{ collection.description }}
+            <p class="flush">
+                {{ collection.description }}
+            </p>
         </div>
-      </header>
-      <hr>
-      <div class="section-header">
+    </header>
+    <hr class="flush--top">
+    <div class="section-header">
         <div class="section-header__right">
-          {% include 'collection-sorting' %}
+            {% include 'collection-sorting' %}
         </div>
-      </div>
-    {% else %}
-      <header class="section-header">
+    </div>
+{% else %}
+    <header class="section-header">
         <h1 class="section-header__title section-header__left">{{ collection.title }}</h1>
         <div class="section-header__right">
-          {% include 'collection-sorting' %}
+            {% include 'collection-sorting' %}
         </div>
-      </header>
-    {% endif %}
+    </header>
+{% endif %}
 
     {% comment %}
       Use class grid-uniform to have evenly sized columns clear
       each other properly at each breakpoint.
     {% endcomment %}
-    <div class="grid-uniform">
+    <div class="grid">
 
       <!-- begin product list output -->
       {% for product in collection.products %}
@@ -75,6 +71,7 @@
           {% assign sold_out = false %}
         {% endif %}
 
+        <!-- serves as a row. needed to keep HR margin on left correct on mobile -->
         <div class="grid__item">
 
           {% comment %}
@@ -88,51 +85,55 @@
             For more info on navigation within a collection
               - http://docs.shopify.com/support/your-store/collections/how-to-navigate-within-a-collection
           {% endcomment %}
-          <div class="grid large--display-table">
-            <div class="grid__item large--one-fifth large--display-table-cell medium--one-third">
-              <a href="{{ product.url | within: collection }}">
-                <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="{{ product.featured_image.alt | escape }}" class="grid__image">
+          <!-- <div class="grid large--display-table"> -->
+            <div class="grid__item xl--one-fifth large--one-fifth medium--one-third small--one-half hard--left push-half--bottom">
+              <a href="{{ product.url | within: collection }}" class="relative">
+                <img class="hard" src="{{ product.featured_image.src | img_url: 'medium' }}" alt="{{ product.featured_image.alt | escape }}" class="grid__image">
+                {% if on_sale %}
+                    <div class="colfax text-bold sale-banner">{{ 'products.product.on_sale' | t | upcase }}</div>
+                {% endif %}
               </a>
             </div>
-            <div class="grid__item large--four-fifths large--display-table-cell medium--two-thirds">
-              <div class="grid">
-                <div class="grid__item large--three-quarters medium--two-thirds">
-                  <p class="h6">{{ product.title }}</p>
-                  <div class="rte">
-                    <p>{{ product.content | strip_html | truncatewords: 30 }}</p>
-                  </div>
-                </div>
-                <div class="grid__item large--one-quarter medium--one-third">
+            <div class="grid__item xl--four-fifths large--four-fifths medium--two-thirds small--one-half">
+                  <a href="{{ product.url | within: collection }}">
+                      <h3 class="push-quarter--bottom">{{ product.title }}</h3>
+                  </a>
+
                   {% comment %}
                     You can show a leading 'from' or 'up to' by checking 'product.price_varies'
                     if your variants have different prices.
                   {% endcomment %}
-                  {% if on_sale %}
-                    {% if product.price_varies %}
-                      {% assign sale_price = product.price | money %}
-                      {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-                    {% else %}
-                      <strong>{{ 'products.product.on_sale' | t }}</strong>
-                      {{ product.price | money }}
-                    {% endif %}
-                  {% else %}
-                    {% if product.price_varies %}
-                      {% assign price = product.price | money %}
-                      {{ 'products.general.from_text_html' | t: price: price }}
-                    {% else %}
-                      {{ product.price | money }}
-                    {% endif %}
-                  {% endif %}
-                  {% if sold_out %}
-                    <br><strong>{{ 'products.product.sold_out' | t }}</strong>
-                  {% endif %}
-                  {% if on_sale %}
-                    <br><span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span><s>{{ product.compare_at_price | money }}</s>
-                  {% endif %}
-                </div>
-              </div>
+                  <p class="colfax push-quarter--bottom">
+                      {% if on_sale %}
+                        {% if product.price_varies %}
+                          {% assign sale_price = product.price | money %}
+                          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                        {% else %}
+                          <!-- <strong>{{ 'products.product.on_sale' | t }}</strong> -->
+                          {{ product.price | money }}
+                        {% endif %}
+                      {% else %}
+                        {% if product.price_varies %}
+                          {% assign price = product.price | money %}
+                          {{ 'products.general.from_text_html' | t: price: price }}
+                        {% else %}
+                          {{ product.price | money }}
+                        {% endif %}
+                      {% endif %}
+                      {% if sold_out %}
+                        <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+                      {% endif %}
+                      {% if on_sale %}
+                        <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span><s>{{ product.compare_at_price | money }}</s>
+                      {% endif %}
+                  </p>
+
+                  <div class="rte">
+                    <p class="xl--hide large--hide medium-down--show push-quarter--bottom" >{{ product.content | strip_html | truncatewords: 10 }}</p>
+                    <p class="xl--show large--show medium-down--hide push-quarter--bottom" >{{ product.content | strip_html | truncatewords: 30 }}</p>
+                  </div>
             </div>
-          </div>
+            {% unless forloop.last %}<hr class="">{% endunless %}
         </div>
 
       {% else %}
@@ -153,11 +154,13 @@
       </div>
     {% endif %}
 
-  </div>
-
   <div class="grid__item large--one-quarter">
     {% include 'collection-sidebar' %}
   </div>
-</div>
 
 {% endpaginate %}
+
+<!-- back button -->
+<p class="colfax text-bold text-center push--top">
+    <a href="/"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;&nbsp;Back to Store Home</a>
+</p>
