@@ -28,45 +28,25 @@
 {% endcomment %}
 <div class="text-center">
     <h3 class="tall">Looking for
-    {% for collection in collections %}
-        {% if collection.products | size > 0 %}
-            {% unless collection.handle == 'frontpage' or collection.handle == 'on-sale' %}
-                {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
-                {% if forloop.last %}
-                    or <a class="link" href="#{{ collection.handle }}">{{ collection_title }}</a>{% else %}
-                    <a class="link" href="#{{ collection.handle }}">{{ collection_title }}</a>,
-                {% endif %}{% endunless %}{% endif %}{% endfor %}?
+        {% for collection in collections %}
+            {% if collection.products | size > 0 %}
+                {% unless collection.handle == 'frontpage' or collection.handle == 'on-sale' %}
+                    {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+                    {% if forloop.last %}
+                        {% if collections.on-sale.products | size > 0 %}
+                            <!-- need to display a sale section link. not actually last item -->
+                            <a class="link" href="#{{ collection.handle }}">{{ collection_title }}</a>,
+                        {% else %}
+                            <!-- actual last item of list. Add or before. no comma after --> 
+                            or <a class="link" href="#{{ collection.handle }}">{{ collection_title }}</a>
+                        {% endif %}
+                    {% else %}
+                        <a class="link" href="#{{ collection.handle }}">{{ collection_title }}</a>,
+                    {% endif %}{% endunless %}{% endif %}{% endfor %}
+        {% if collections.on-sale.products | size > 0 %}or <a class="link" href="#on-sale">Sales</a>{% endif %}?
     </h3>
 </div>
 <hr class="push-quarter--top">
-
-{% comment %}
-    Show all of the on sale items (from the on-sale collection)
-{% endcomment %}
-{% if collections.on-sale.products | size > 0 %}
-    {% capture collection_title %}{{ collections.on-sale.title | escape }}{% endcapture %}
-    <h3 class="text-left push-half--top">{{ collection_title }}</h3>
-    <div class="grid-uniform text-center">
-        {% assign isEmpty = false %}
-
-        {% comment %}
-            Loop through products in your Frontpage collection.
-            This collection is created by default, but you must add products to it.
-        {% endcomment %}
-        {% for product in collections.on-sale.products %}
-            {% comment %}
-                Change the grid item width by using classes from the grid in
-                the grid_item_width variable.
-
-                Example:
-                - {% assign grid_item_width = 'large--one-third medium--one-half' %}
-            {% endcomment %}
-            {% assign grid_item_width = 'xxl--one-quarter xl--one-quarter large--one-quarter medium--one-half' %}
-            {% include 'product-grid-item' %}
-        {% endfor %}
-    </div>
-    <hr class="flush--ends"/>
-{% endif %}
 
 {% comment %}
     Show all of the products in the store, below collection headings
@@ -96,8 +76,35 @@
                 {% include 'product-grid-item' %}
             {% endfor %}
         </div>
-        {% unless forloop.last %}
-            <hr class="flush--ends"/>
-        {% endunless %}
+        <hr class="flush--ends"/>
     {% endunless %}
 {% endfor %}
+
+{% comment %}
+    Show all of the on sale items (from the on-sale collection)
+{% endcomment %}
+{% if collections.on-sale.products | size > 0 %}
+    {% capture collection_title %}{{ collections.on-sale.title | escape }}{% endcapture %}
+    {% capture collection_handle %}{{ collections.on-sale.handle | escape }}{% endcapture %}
+    <h3 class="text-left push-half--top" id="{{ collection_handle }}">{{ collection_title }}</h3>
+    <div class="grid-uniform text-center">
+        {% assign isEmpty = false %}
+
+        {% comment %}
+            Loop through products in your Frontpage collection.
+            This collection is created by default, but you must add products to it.
+        {% endcomment %}
+        {% for product in collections.on-sale.products %}
+            {% comment %}
+                Change the grid item width by using classes from the grid in
+                the grid_item_width variable.
+
+                Example:
+                - {% assign grid_item_width = 'large--one-third medium--one-half' %}
+            {% endcomment %}
+            {% assign grid_item_width = 'xxl--one-quarter xl--one-quarter large--one-quarter medium--one-half' %}
+            {% include 'product-grid-item' %}
+        {% endfor %}
+    </div>
+    <hr class="flush--ends"/>
+{% endif %}
