@@ -105,7 +105,10 @@
           {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}
         </button>
         {% endraw %}{% if additional_checkout_buttons %}
-          <div class="additional_checkout_buttons text-center">{{ content_for_additional_checkout_buttons }}</div>
+          <div class="additional_checkout_buttons text-center">
+              <!-- {{ content_for_additional_checkout_buttons }} -->
+              <input type="image" name="goto_pp" value="paypal_express" src="http://ns.images.s3.amazonaws.com/newspring/store/paypal-checkout-icon.png">
+          </div>
         {% endif %}{% raw %}
       </div>
     </form>
