@@ -1,0 +1,25 @@
+<!-- DESKTOP SEARCH/CART -->
+<div class="subheading wrapper background--primary large--hide medium-down--hide">
+    <div class="grid">
+        <div class="grid__item xl--one-half large--one-half medium-down--hide">
+            <!-- search bar -->
+            <div class="site-header__search">
+              {% include 'search-bar' %}
+            </div>
+        </div>
+        <div class="grid__item xl--one-half large--one-half text-right medium-down--hide" style="vertical-align: middle;">
+            <!-- cart count -->
+            <div>
+                <p id="subheading-cart" class="colfax">
+                    <a href="/cart" class="light site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
+                        <span class="icon icon-cart" aria-hidden="true"></span>
+                        {{ 'layout.cart.title' | t }}
+                        (<span id="CartCount">{{ cart.item_count }}</span>
+                        {{ 'layout.cart.items_count' | t: count: cart.item_count }}
+                        <span id="CartCost">{{ cart.total_price | money }}</span>)
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -52,7 +52,7 @@
 
   {% endcomment %}
   <a href="{{ product.url | within: collection }}" class="grid__image relative">
-    <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+    <img src="{{ product.featured_image.src | img_url: 'original' }}" alt="{{ product.featured_image.alt | escape }}">
     {% if on_sale %}
         <div class="colfax text-bold sale-banner">{{ 'products.product.on_sale' | t | upcase }}</div>
     {% endif %}

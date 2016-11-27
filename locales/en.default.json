@@ -6,7 +6,7 @@
     },
     "404": {
       "title": "404 Page Not Found",
-      "subtext_html": "The page you requested does not exist. Click <a href=\"/collections/all\">here</a> to continue shopping."
+      "subtext_html": "The page you requested does not exist. Click <a href=\"\/collections\/all\">here<\/a> to continue shopping."
     },
     "breadcrumbs": {
       "home": "Home",
@@ -24,16 +24,16 @@
       "placeholder": "Search Our Store",
       "submit": "Search"
     },
-    "password_page" : {
-        "password_link": "Sign in using Password",
-        "opening_soon": "Opening Soon",
-        "signup_form_heading": "Find out when we open",
-        "signup_form_email_placeholder": "Your email",
-        "signup_form_submit": "Submit",
-        "login_form_heading": "Enter the store password to enter",
-        "login_form_password_placeholder": "Your password",
-        "login_form_submit": "Submit",
-        "admin_link_html": "<a href='https://newspring-store.myshopify.com/admin'>Admin Login</a>"
+    "password_page": {
+      "password_link": "Sign in using Password",
+      "opening_soon": "Opening Soon",
+      "signup_form_heading": "Find out when we open",
+      "signup_form_email_placeholder": "Your email",
+      "signup_form_submit": "Submit",
+      "login_form_heading": "Enter the store password to enter",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Submit",
+      "admin_link_html": "<a href='https:\/\/newspring-store.myshopify.com\/admin'>Admin Login<\/a>"
     }
   },
   "blogs": {
@@ -68,13 +68,13 @@
     "general": {
       "title": "Shopping Cart",
       "remove": "Remove",
-      "note": "Special instructions for seller",
+      "note": "Special instructions for NewSpring",
       "subtotal": "Subtotal",
       "shipping_at_checkout": "Shipping & taxes calculated at checkout",
       "update": "Update Cart",
       "checkout": "Check Out",
       "empty": "Your cart is currently empty.",
-      "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>.",
+      "continue_browsing_html": "Continue browsing <a href=\"\/collections\/all\">here<\/a>.",
       "close_cart": "Close Cart",
       "savings_html": "You're saving {{ price }}"
     },
@@ -111,7 +111,7 @@
       "date_descending": "Date, new to old",
       "date_ascending": "Date, old to new"
     },
-     "onboarding": {
+    "onboarding": {
       "modal_title": "This page will show all of your store's products",
       "no_products_html": "There are no products yet, but once you begin adding them they will show up here regardless if they are in a collection.",
       "add_product": "Add Product"
@@ -155,7 +155,7 @@
       "city": "City",
       "country": "Country",
       "province": "Province",
-      "zip": "Postal/Zip Code",
+      "zip": "Postal\/Zip Code",
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add Address",
@@ -236,10 +236,10 @@
     },
     "onboarding": {
       "modal_title": "Almost there...",
-      "no_products_html": "You have no products in your Frontpage collection. This placeholder will appear until you <a href=\"/admin/collections?tutorial=Frontpage\">add a product to this collection</a>.",
+      "no_products_html": "You have no products in your Frontpage collection. This placeholder will appear until you <a href=\"\/admin\/collections?tutorial=Frontpage\">add a product to this collection<\/a>.",
       "add_product": "Add a Product",
       "product_title": "Example Product Title",
-      "no_collections_html": "You don't have any collections to show here. <a href=\"/admin/custom_collections\">Add some collections</a> to go along with the default Frontpage.",
+      "no_collections_html": "You don't have any collections to show here. <a href=\"\/admin\/custom_collections\">Add some collections<\/a> to go along with the default Frontpage.",
       "add_collection": "Add a Collection",
       "collection_title": "Example Collection Title"
     }
@@ -283,7 +283,7 @@
     "product": {
       "sold_out": "Sold Out",
       "on_sale": "Sale",
-      "on_sale_from_html": "<strong>On Sale</strong> from {{ price }}",
+      "on_sale_from_html": "<strong>On Sale<\/strong> from {{ price }}",
       "unavailable": "Unavailable",
       "compare_at": "Compare at",
       "quantity": "Qty",
@@ -303,7 +303,15 @@
       "add_to_apple_wallet": "Add to Apple Wallet"
     }
   },
-  "date_formats":{
+  "date_formats": {
     "month_day_year": "%B %d, %Y"
+  },
+  "shopify": {
+    "checkout": {
+      "thank_you": {
+        "thank_you_description_html": "We've received your order and our volunteer team will get it ready! We fulfill orders on Sunday mornings. A confirmation email has been sent to {{ email }}. We will send another email when your order ships or is ready for pickup!",
+        "thank_you_title": "We've got your order!"
+      }
+    }
   }
 }
